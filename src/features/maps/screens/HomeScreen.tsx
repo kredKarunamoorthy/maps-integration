@@ -1,51 +1,40 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
-import { MapScreen } from '../components/MapScreen';
+import { View, StyleSheet, StatusBar } from 'react-native';
+import { Button } from 'react-native-paper';
 
-export default function HomeScreen() {
-    const [showMap, setShowMap] = useState(false);
+import { HomeScreenNavigationProp } from '../../../navigation/types';
 
-    function mapShowHandler() {
-        setShowMap(true);
-    }
+type Props = {
+    navigation: HomeScreenNavigationProp;
+};
 
-    if(showMap) {
-        return <MapScreen />;
-    }
+export default function HomeScreen({ navigation }: Props) {
 
-  return (
-    <View style={styles.container}>
-      <StatusBar barStyle = "dark-content" translucent = {true} />
-      <Text style={styles.title}>Maps</Text>
-      <TouchableOpacity style={styles.mapButton} onPress={mapShowHandler}>
-        <Text style={styles.mapButtonText}>Map</Text>
-      </TouchableOpacity>
-    </View>
-  );
+    return (
+        <View style={styles.container}>
+            <StatusBar barStyle="dark-content" translucent={true} />
+            <View style={styles.button}>
+                <Button icon="map" mode="text" onPress={() => navigation.navigate("MapScreen")}>
+                    Map Integration
+                </Button>
+            </View>
+            <View>
+                <Button icon="api" mode="text" onPress={() => navigation.navigate("APIScreen")}>
+                    React Query
+                </Button>
+            </View>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
-  },
-  mapButton: {
-    position: 'absolute',
-    bottom: 40,
-    alignSelf: 'center',
-    backgroundColor: '#6200ee',
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 25,
-    elevation: 4,
-  },
-  mapButtonText: {
-    color: '#fff',
-    fontSize: 16,
-  },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    button: {
+        paddingBottom: 5,
+        borderRadius: "25px",
+    },
 });

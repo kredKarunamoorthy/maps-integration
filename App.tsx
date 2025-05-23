@@ -1,9 +1,13 @@
 import React from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
-import HomeScreen from './src/features/maps/screens/HomeScreen';
 import { DefaultTheme } from 'react-native-paper';
 
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+import { NavigationContainer } from '@react-navigation/native';
+import StackNavigator from './src/navigation/StackNavigator';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 
 const lightTheme = {
   ...DefaultTheme,
@@ -14,12 +18,18 @@ const lightTheme = {
   },
 };
 
+const queryClient = new QueryClient();
+
 export default function App() {
   return (
-    <SafeAreaProvider>
-      <PaperProvider theme={lightTheme}>
-        <HomeScreen />
-      </PaperProvider>
-    </SafeAreaProvider>
+    <QueryClientProvider client={queryClient}>
+    <NavigationContainer>
+      <SafeAreaProvider>
+        <PaperProvider theme={lightTheme}>
+          <StackNavigator />
+        </PaperProvider>
+      </SafeAreaProvider>
+    </NavigationContainer>
+    </QueryClientProvider>
   );
 }
