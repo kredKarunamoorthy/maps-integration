@@ -23,6 +23,11 @@ export default function HomeScreen({ navigation }: Props) {
                     React Query
                 </Button>
             </View>
+            <View>
+                <Button icon="calendar" mode="text" onPress={() => navigation.navigate("CalendarScreen")}>
+                    Calendar Filter
+                </Button>
+            </View>
         </View>
     );
 }

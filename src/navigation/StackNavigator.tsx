@@ -1,7 +1,8 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from '../features/maps/screens/HomeScreen';
-import { MapScreen } from '../features/maps/components/MapScreen';
-import APIScreen from '../features/maps/components/APIScreen';
+import HomeScreen from '../features/maps/screens';
+import { MapScreen } from '../features/maps/screens/MapScreen';
+import APIScreen from '../features/maps/screens/APIScreen';
+import Calendar from '../features/maps/screens/CalendarEventFilter';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,14 @@ export default function StackNavigator() {
                 component={APIScreen}
                 options={{
                     title: 'API',
+                    headerTitleAlign: 'center',
+                }}
+            />
+            <Stack.Screen
+                name="CalendarScreen"
+                component={Calendar}
+                options={{
+                    title: 'Calendar',
                     headerTitleAlign: 'center',
                 }}
             />

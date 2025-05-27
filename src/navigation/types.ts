@@ -4,6 +4,7 @@ export type RootStackParamList = {
   HomeScreen: undefined;
   MapScreen: undefined;
   APIScreen: undefined;
+  CalendarScreen: undefined;
 };
 
 export type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'HomeScreen'>;
